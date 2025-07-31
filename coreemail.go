@@ -1,4 +1,4 @@
-// Package coreemail sendmail
+// Package coreemail sendmail and validate
 package coreemail
 
 import (
