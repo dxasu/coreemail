@@ -12,15 +12,15 @@ import (
 
 type Mail struct {
 	SenderAddr   string   `validate:"required,email"`         // 必填且符合邮箱格式
-	SenderName   string   `validate:"required,min=1,max=20"`  // 必填，长度1-50字符
+	SenderName   string   `validate:"required,min=3,max=20"`  // 必填，长度1-20字符
 	ReceiverAddr []string `validate:"required,dive,email"`    // 必填，每个元素需为邮箱格式
 	Subject      string   `validate:"required,min=1,max=100"` // 必填，长度1-100字符
 	Text         string   // 正文
-	FilePaths    []string `validate:"dive,file"`                // 每个附件路径需为有效文件路径[5,7](@ref)
-	Host         string   `validate:"required,hostname|ipv4"`   // 必填，需为域名或IPv4地址[1,7](@ref)
-	Port         int      `validate:"required,min=1,max=65535"` // 必填，端口号范围1-65535
-	Username     string   `validate:"required"`                 // 必填
-	Password     string   `validate:"required"`                 // 必填
+	FilePaths    []string `validate:"dive,file"`                 // 每个附件路径需为有效文件路径[5,7](@ref)
+	Host         string   `validate:"required,hostname|ipv4"`    // 必填，需为域名或IPv4地址[1,7](@ref)
+	Port         int      `validate:"required,min=20,max=65535"` // 必填，端口号范围20-65535
+	Username     string   `validate:"required,min=3,max=20"`     // 必填
+	Password     string   `validate:"required,min=6,max=20"`     // 必填
 }
 
 func (mail *Mail) Validate() error {
